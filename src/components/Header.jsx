@@ -1,7 +1,7 @@
 function Header() {
   return (
     <header className="text-center mb-4 sm:mb-6 md:mb-8">
-      <div className="flex justify-center items-center gap-1.5 sm:gap-2.5 text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3">
+      <div className="flex justify-center items-center gap-1.5 sm:gap-2.5 text-xl sm:text-2xl md:text-3xl mb-2 sm:mb-3">
         <span className="flower-float text-gold-400/70">✿</span>
         <span className="star-pulse text-gold-400">✦</span>
         <span className="star-pulse text-gold-400">✦</span>
