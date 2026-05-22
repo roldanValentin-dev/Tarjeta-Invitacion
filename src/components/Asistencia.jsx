@@ -25,7 +25,7 @@ function Asistencia({ onOpenModal }) {
         onClick={onOpenModal}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-4 bg-gradient-to-r from-rose-500 to-lavender-600 hover:from-rose-600 hover:to-lavender-700 text-white rounded-2xl text-base font-bold tracking-widest transition-all duration-300 shadow-[0_8px_30px_rgba(200,150,200,0.3)] hover:shadow-[0_12px_40px_rgba(200,150,200,0.4)] ring-2 ring-rose-300/30 active:scale-[0.97]"
+        className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-4 bg-rose-600 hover:bg-rose-700 text-white rounded-2xl text-base font-bold tracking-widest transition-all duration-300 shadow-[0_8px_30px_rgba(192,40,64,0.35)] hover:shadow-[0_12px_40px_rgba(192,40,64,0.45)] ring-2 ring-rose-400/30 active:scale-[0.97]"
         style={{ transition: 'transform 0.15s ease-out, box-shadow 0.3s, background 0.3s' }}
       >
         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">

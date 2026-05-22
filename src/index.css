@@ -48,15 +48,7 @@ html { overflow-x: hidden; }
   animation: cardEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* ========== CARD FLOAT ========== */
-@keyframes cardFloat {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-5px) scale(1.008); }
-}
-.card-wrapper {
-  will-change: transform;
-  animation: cardFloat 5s ease-in-out 2s infinite;
-}
+
 
 /* ========== BORDER GLOW ========== */
 @keyframes borderGlow {
@@ -101,7 +93,7 @@ html { overflow-x: hidden; }
   position: fixed;
   z-index: 0;
   pointer-events: none;
-  color: rgba(200, 150, 200, 0.12);
+  color: rgba(224, 80, 104, 0.15);
   will-change: transform;
   animation: floatUp linear infinite;
 }
@@ -129,7 +121,7 @@ html { overflow-x: hidden; }
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(224, 80, 104, 0.35);
   will-change: transform;
   animation: sparkleTwinkle 3s ease-in-out infinite;
 }
@@ -151,8 +143,8 @@ html { overflow-x: hidden; }
 }
 .shimmer-title {
   background: linear-gradient(135deg,
-    #C98A93 0%, #D9C4E8 25%, #E87A8A 50%,
-    #C9A9D6 75%, #C98A93 100%);
+    #D43850 0%, #D0A8D8 25%, #E05068 50%,
+    #C088C8 75%, #D43850 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -161,28 +153,6 @@ html { overflow-x: hidden; }
 }
 
 /* ========== PHOTO ========== */
-@keyframes cinematicReveal {
-  from { clip-path: circle(0% at 50% 45%); }
-  to { clip-path: circle(100% at 50% 45%); }
-}
-.foto-zoom img {
-  clip-path: circle(0% at 50% 45%);
-  animation: cinematicReveal 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
-}
-
-@keyframes frameGlow {
-  0%, 100% { box-shadow: 0 0 8px 2px rgba(200, 150, 200, 0.12); }
-  50%      { box-shadow: 0 0 18px 5px rgba(232, 122, 138, 0.2), 0 0 30px 8px rgba(201, 169, 214, 0.12); }
-}
-.foto-glow { animation: frameGlow 4s ease-in-out infinite; }
-
-.foto-vignette::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.12) 100%);
-  pointer-events: none;
-}
 
 /* ========== QUOTE ========== */
 @keyframes quotePop {
@@ -206,13 +176,6 @@ html { overflow-x: hidden; }
 }
 .heartbeat { display: inline-block; animation: heartbeat 2.5s ease-in-out infinite; }
 
-/* ========== GLOW TEXT ========== */
-@keyframes glowPulse {
-  0%, 100% { text-shadow: 0 0 6px rgba(200, 150, 200, 0.15); }
-  50% { text-shadow: 0 0 14px rgba(232, 122, 138, 0.25), 0 0 28px rgba(232, 122, 138, 0.12); }
-}
-.glow-pulse-text { animation: glowPulse 2.5s ease-in-out infinite; }
-
 /* ========== FLAME ========== */
 @keyframes flicker {
   0%, 100% { transform: scaleY(1) scaleX(1); opacity: 0.85; }
@@ -228,25 +191,6 @@ html { overflow-x: hidden; }
   animation: flicker 0.5s ease-in-out infinite;
   transform-origin: center bottom;
 }
-
-/* ========== SPARKLE HOVER ========== */
-.foto-sparkle {
-  position: absolute;
-  color: #C9A9D6;
-  opacity: 0;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  pointer-events: none;
-  font-size: 14px;
-}
-.foto-group:hover .foto-sparkle { opacity: 1; }
-.foto-sparkle:nth-child(1) { top: -14px; left: 50%; transform: translateX(-50%) translateY(8px) scale(0.5); transition-delay: 0s; }
-.foto-sparkle:nth-child(2) { top: 50%; right: -16px; transform: translateY(-50%) translateX(8px) scale(0.5); transition-delay: 0.08s; }
-.foto-sparkle:nth-child(3) { bottom: -14px; left: 50%; transform: translateX(-50%) translateY(-8px) scale(0.5); transition-delay: 0.16s; }
-.foto-sparkle:nth-child(4) { top: 50%; left: -16px; transform: translateY(-50%) translateX(-8px) scale(0.5); transition-delay: 0.24s; }
-.foto-group:hover .foto-sparkle:nth-child(1),
-.foto-group:hover .foto-sparkle:nth-child(3) { transform: translateX(-50%) translateY(0) scale(1); }
-.foto-group:hover .foto-sparkle:nth-child(2),
-.foto-group:hover .foto-sparkle:nth-child(4) { transform: translateY(-50%) translateX(0) scale(1); }
 
 /* ========== RIPPLE ========== */
 @keyframes rippleExpand {
@@ -293,21 +237,21 @@ html { overflow-x: hidden; }
 .corner-flower:nth-child(4) { animation-delay: 1.3s; }
 @keyframes cornerFlowerIn {
   from { opacity: 0; transform: scale(0) rotate(-90deg); }
-  to   { opacity: 0.12; transform: scale(1) rotate(var(--rot, 0deg)); }
+  to   { opacity: 0.2; transform: scale(1) rotate(var(--rot, 0deg)); }
 }
 
 /* ========== SECTION CARDS ========== */
 .section-card {
-  background: linear-gradient(135deg, rgba(255,255,255,0.75), rgba(250,245,250,0.4));
-  border: 1px solid rgba(201, 169, 214, 0.1);
+  background: linear-gradient(135deg, rgba(255,245,247,0.85), rgba(245,235,248,0.6));
+  border: 1px solid rgba(224, 80, 104, 0.15);
   border-radius: 1.5rem;
   padding: 1.25rem;
-  box-shadow: 0 2px 10px rgba(200,150,200,0.05), 0 0 0 1px rgba(232,122,138,0.02);
+  box-shadow: 0 2px 10px rgba(224,80,104,0.08), 0 0 0 1px rgba(224,80,104,0.03);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .section-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(200,150,200,0.1), 0 0 0 1px rgba(232,122,138,0.04);
+  box-shadow: 0 8px 28px rgba(200,80,100,0.12), 0 0 0 1px rgba(224,80,104,0.06);
 }
 
 /* ========== CARD INNER SPARKLES ========== */
@@ -315,7 +259,7 @@ html { overflow-x: hidden; }
   position: absolute;
   pointer-events: none;
   z-index: 1;
-  color: rgba(232, 122, 138, 0.15);
+  color: rgba(224, 80, 104, 0.2);
   font-size: 10px;
   animation: cardSparklePulse 2.5s ease-in-out infinite;
 }

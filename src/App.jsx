@@ -4,9 +4,6 @@ import Nombre from './components/Nombre'
 import Foto from './components/Foto'
 import Invitacion from './components/Invitacion'
 import Detalles from './components/Detalles'
-import Contador from './components/Contador'
-import Pastel from './components/Pastel'
-import Mensaje from './components/Mensaje'
 import Asistencia from './components/Asistencia'
 import Footer from './components/Footer'
 import RSVPModal from './components/RSVPModal'
@@ -34,7 +31,7 @@ const NOTES = [
   { id: 'n4', left: '90%', delay: '6s', duration: '22s', note: '♬' },
 ]
 
-const CONFETTI_COLORS = ['#E87A8A', '#C9A9D6', '#E8B4B8', '#D9C4E8', '#D4959C', '#B894C9']
+const CONFETTI_COLORS = ['#E05068', '#C088C8', '#E8808E', '#D0A8D8', '#D43850', '#B070B8']
 const CONFETTI = Array.from({ length: 8 }, (_, i) => ({
   id: `c${i}`,
   left: `${(i * 12.5 + Math.sin(i * 2.1) * 3) % 100}%`,
@@ -119,8 +116,6 @@ function App() {
     }
   }, [])
 
-
-
   const handleCardClick = (e) => {
     const rect = e.currentTarget.getBoundingClientRect()
     const id = Date.now() + Math.random()
@@ -147,8 +142,8 @@ function App() {
       >
         <div
           ref={cursorRef}
-          className="hidden sm:block fixed pointer-events-none z-[9999] text-lavender-300 text-xl opacity-0 transition-opacity duration-200"
-          style={{ left: 0, top: 0, transform: 'translate(-50%, -50%)', textShadow: '0 0 10px rgba(201,169,214,0.5)' }}
+          className="hidden sm:block fixed pointer-events-none z-[9999] text-rose-400 text-xl opacity-0 transition-opacity duration-200"
+          style={{ left: 0, top: 0, transform: 'translate(-50%, -50%)', textShadow: '0 0 10px rgba(224,80,104,0.4)' }}
         >
           ✦
         </div>
@@ -161,8 +156,8 @@ function App() {
               left: g.left,
               width: g.size,
               height: g.size,
-              background: 'radial-gradient(circle, #E8B4B8, #C9A9D6)',
-              boxShadow: '0 0 6px 2px rgba(200,150,200,0.2)',
+              background: 'radial-gradient(circle, #E8808E, #C088C8)',
+              boxShadow: '0 0 6px 2px rgba(224,80,104,0.25)',
               animationDelay: g.delay,
               animationDuration: g.duration,
             }}
@@ -183,10 +178,10 @@ function App() {
 
         <div className="card-wrapper w-full max-w-lg mx-auto my-4 sm:my-6 md:my-8">
           <div
-            className="card-enter relative w-full rounded-[2rem] shadow-[0_12px_60px_rgba(200,150,200,0.15),0_4px_16px_rgba(200,150,200,0.08)] border border-rose-200/40 p-5 sm:p-6 md:p-8 lg:p-10 overflow-hidden"
+            className="card-enter relative w-full rounded-[2rem] shadow-[0_12px_60px_rgba(224,80,104,0.15),0_4px_16px_rgba(224,80,104,0.08)] border border-rose-300/50 p-5 sm:p-6 md:p-8 lg:p-10 overflow-hidden"
             onClick={handleCardClick}
             style={{
-              backgroundColor: 'rgba(255, 245, 247, 0.95)',
+              backgroundColor: 'rgba(255, 240, 242, 0.96)',
             }}
           >
             {/* Corner decorations */}
@@ -210,38 +205,37 @@ function App() {
               <span key={r.id} className="ripple" style={{ left: r.x, top: r.y }} />
             ))}
 
-            <div ref={revealRef} className="space-y-5 sm:space-y-6">
-              <div className="reveal section-card"><Header /></div>
-              <div className="reveal section-card"><Nombre /></div>
-              <div className="reveal section-card"><Foto /></div>
-
-              <div className="flex items-center gap-3 opacity-30 px-4">
-                <span className="h-px flex-1 bg-gradient-to-r from-transparent via-lavender-300/50 to-transparent" />
-                <span className="text-lavender-300/60 text-xs">✦</span>
-                <span className="h-px flex-1 bg-gradient-to-r from-transparent via-lavender-300/50 to-transparent" />
+            <div ref={revealRef} className="space-y-6 sm:space-y-8">
+              {/* Container 1: Header */}
+              <div className="reveal section-card text-center">
+                <Header />
+                <div className="mt-2">
+                  <Nombre />
+                </div>
               </div>
 
-              <div className="reveal section-card"><Invitacion /></div>
-              <div className="reveal section-card"><Detalles /></div>
-
-              <div className="flex items-center gap-3 opacity-30 px-4">
-                <span className="h-px flex-1 bg-gradient-to-r from-transparent via-lavender-300/50 to-transparent" />
-                <span className="text-lavender-300/60 text-xs">🌸</span>
-                <span className="h-px flex-1 bg-gradient-to-r from-transparent via-lavender-300/50 to-transparent" />
+              {/* Container 2: Photo */}
+              <div className="reveal text-center">
+                <Foto />
               </div>
 
-              <div className="reveal section-card"><Contador /></div>
-              <div className="reveal section-card"><Pastel /></div>
-              <div className="reveal section-card"><Mensaje /></div>
-
-              <div className="flex items-center gap-3 opacity-30 px-4">
-                <span className="h-px flex-1 bg-gradient-to-r from-transparent via-lavender-300/50 to-transparent" />
-                <span className="text-lavender-300/60 text-xs">✦</span>
-                <span className="h-px flex-1 bg-gradient-to-r from-transparent via-lavender-300/50 to-transparent" />
+              {/* Invitation text */}
+              <div className="reveal section-card text-center">
+                <Invitacion />
               </div>
 
-              <div className="reveal section-card"><Asistencia onOpenModal={() => setRsvpOpen(true)} /></div>
-              <div className="reveal section-card"><Footer /></div>
+              {/* Container 3: Details + Confirm button */}
+              <div className="reveal section-card">
+                <Detalles />
+                <div className="mt-10 sm:mt-12">
+                  <Asistencia onOpenModal={() => setRsvpOpen(true)} />
+                </div>
+              </div>
+
+              {/* Footer */}
+              <div className="reveal section-card">
+                <Footer />
+              </div>
             </div>
           </div>
         </div>
