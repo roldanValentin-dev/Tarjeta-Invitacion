@@ -35,7 +35,7 @@ const NOTES = [
 ]
 
 const CONFETTI_COLORS = ['#E87A8A', '#C9A9D6', '#E8B4B8', '#D9C4E8', '#D4959C', '#B894C9']
-const CONFETTI = Array.from({ length: 16 }, (_, i) => ({
+const CONFETTI = Array.from({ length: 8 }, (_, i) => ({
   id: `c${i}`,
   left: `${(i * 12.5 + Math.sin(i * 2.1) * 3) % 100}%`,
   delay: `${Math.sin(i * 0.7) * 1.2 + 0.8}s`,
