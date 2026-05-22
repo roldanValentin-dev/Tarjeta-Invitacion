@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Luci's 80th Birthday Invitation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .vibrant-gradient-bg {
+            background: linear-gradient(135deg, #fce7f3 0%, #f3e8ff 50%, #fdf2f8 100%);
+        }
+        .sparkle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            pointer-events: none;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+        @keyframes twinkle {
+            0%, 100% { transform: scale(0.5); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#a43073",
+                        "secondary": "#8127cf",
+                        "primary-container": "#f472b6",
+                        "secondary-container": "#9c48ea",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "surface": "#f8f9ff",
+                        "surface-bright": "#f8f9ff",
+                        "surface-dim": "#d1dbec",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#eef4ff",
+                        "surface-container": "#e5eeff",
+                        "surface-container-high": "#dfe9fa",
+                        "surface-container-highest": "#d9e3f4",
+                        "on-surface": "#121c28",
+                        "on-surface-variant": "#544249",
+                        "outline": "#87717a",
+                        "tertiary": "#795900",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#ca9700"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding": "24px",
+                        "section-gap": "80px",
+                        "base": "8px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-xl": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="vibrant-gradient-bg font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-md border-b border-white/20">
+<div class="flex items-center justify-between px-6 py-4 w-full max-w-screen-xl mx-auto">
+<button aria-label="Menu" class="text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-2xl text-primary tracking-tight">Luci's 80th</h1>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 max-w-[420px] mx-auto min-h-screen relative">
+<!-- Floating Sparkles Container -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden" id="sparkle-container"></div>
+<!-- Main Invitation Card -->
+<div class="w-full bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(164,48,115,0.15)] overflow-hidden transition-all duration-500 relative">
+<!-- Imagery Header: IMAGE_5 -->
+<div class="h-40 w-full relative">
+<img alt="Floral background with sparkles" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlEDuCnyNXYlCLWzGH3qM_WFyfwcbPDu9VMXcPILjU_uKJamsfeKHg6NP7JLBN8sEg0kitg592tDBaF6VEJ_5MFT4GR7uBsfTZqfJrgIEYUxvFCg6py5-WYtkS-3OF2QkxBi6NS9LLGbIFVTAeL_G18P1g4ZG0tfqn3QwAIaFsR21XVrhlHXLSydDpGmK1uTZ6JLjYHgv3JNAaaRnrfEJdc7sW6Uov3tZ5w-Hzmo35Fg3U2LF2XCkb5lgyQNNi-q_4e7qxhpSeCcsa"/>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-white"></div>
+</div>
+<!-- Hero Section -->
+<div class="relative px-6 pb-8 text-center -mt-12">
+<div class="relative z-10">
+<h2 class="font-headline-lg text-4xl text-primary mb-2">Mis 80 Años</h2>
+<div class="flex justify-center items-center gap-3 mb-6">
+<div class="h-[1px] w-10 bg-primary/30"></div>
+<span class="font-headline-lg text-5xl text-secondary italic">Luci</span>
+<div class="h-[1px] w-10 bg-primary/30"></div>
+</div>
+<!-- Family Photo (Preserved) -->
+<div class="relative mx-auto w-44 h-44 mb-6 rounded-full border-4 border-white shadow-xl overflow-hidden ring-4 ring-pink-100">
+<img alt="Portrait of Luci" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVYJL5pf6bIrhFqwRFKvW6_e2yt33JaIjQzAT7_j3CKZw-Ya6yNWq0H8_cCIQuEMKTI5T34zqgHZpk5_ieNV_BPK4htnFYZUFgq5WtYDnrw89OZqsl7GamtlGnam1Yyat9fxSw-ns9EhfiB2a58533Axc8kRh2uopE2B7uslP9YPRbbvXYnVqJrEozDVub1DL3-wNKVv4DJXNlkatL2cRU5hS_DNhqhQIji5Jtw76xrUzbm44AKfjf6tphjATFWhF2hJuazPU4B_MR"/>
+</div>
+<!-- Decorative Element: IMAGE_6 Near Name -->
+<div class="absolute top-10 -right-4 w-24 h-24 opacity-80 pointer-events-none rotate-12">
+<img alt="Floral decoration" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWGnI6Q-iGYH11GOlzlKbU0tQbJsdZbLVMJhZJyBusQeNOLlEG9Nec6KGzZ-lpzlrehHapAjEuvzrV2ELkLxAqDGoRvV09vcgNxM5QN73ZCkF1ARM1Frh-3p6AcibcAZWx6p2se21DBNjz__m_mo62FfaWRNCoRfRmxAS8QtWTEMX2Ias1-OFr2jkxCOYRhxzy2gOoTrZpyUOxnYBHYoshBa0nVuemispYLshOl9Y7z4jTa2F9Yi0VfDuCkpStfPO2YEp5qx1sGKTc"/>
+</div>
+<div class="absolute bottom-20 -left-6 w-28 h-28 opacity-80 pointer-events-none -rotate-12">
+<img alt="Floral decoration" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWGnI6Q-iGYH11GOlzlKbU0tQbJsdZbLVMJhZJyBusQeNOLlEG9Nec6KGzZ-lpzlrehHapAjEuvzrV2ELkLxAqDGoRvV09vcgNxM5QN73ZCkF1ARM1Frh-3p6AcibcAZWx6p2se21DBNjz__m_mo62FfaWRNCoRfRmxAS8QtWTEMX2Ias1-OFr2jkxCOYRhxzy2gOoTrZpyUOxnYBHYoshBa0nVuemispYLshOl9Y7z4jTa2F9Yi0VfDuCkpStfPO2YEp5qx1sGKTc"/>
+</div>
+<p class="font-body-lg text-secondary italic mb-2">Acompañame a celebrar</p>
+<p class="font-body-md text-on-surface-variant max-w-[260px] mx-auto">Una vida llena de amor, historias y alegría compartida con todos ustedes.</p>
+</div>
+</div>
+<!-- Details Section -->
+<div class="bg-pink-50/50 py-10 px-6 text-center space-y-8 relative border-t border-pink-100">
+<!-- Date & Time -->
+<div class="space-y-2">
+<div class="flex justify-center mb-3">
+<div class="p-3 bg-white rounded-full shadow-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+</div>
+</div>
+<h3 class="font-label-md text-primary uppercase tracking-[0.2em] text-xs">Cuándo</h3>
+<p class="font-headline-md text-3xl text-on-surface">Sábado 15 de Junio</p>
+<p class="font-body-lg text-primary font-semibold">19:00 hrs</p>
+</div>
+<div class="w-16 h-[1px] bg-primary/20 mx-auto"></div>
+<!-- Location -->
+<div class="space-y-2">
+<div class="flex justify-center mb-3">
+<div class="p-3 bg-white rounded-full shadow-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+<h3 class="font-label-md text-primary uppercase tracking-[0.2em] text-xs">Dónde</h3>
+<p class="font-headline-md text-2xl text-on-surface leading-tight px-4">Salón de Eventos "La Rosaleda"</p>
+<p class="font-body-md text-on-surface-variant mt-2 px-6">Calle de las Flores 123, Ciudad de México</p>
+</div>
+</div>
+<!-- RSVP Button -->
+<div class="p-8 text-center bg-white border-t border-pink-50">
+<button class="w-full bg-gradient-to-r from-primary to-secondary text-on-primary font-bold tracking-widest text-sm py-5 rounded-2xl shadow-[0_10px_25px_rgba(164,48,115,0.3)] hover:brightness-110 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3" onclick="handleRSVP()">
+<span class="material-symbols-outlined">edit_calendar</span>
+                CONFIRMAR ASISTENCIA
+            </button>
+<p class="mt-4 font-label-md text-[10px] text-primary/60 tracking-[0.2em] uppercase">Favor de confirmar antes del 1 de Junio</p>
+</div>
+</div>
+<!-- Decorative Bottom Divider -->
+<div class="mt-16 flex flex-col items-center opacity-30">
+<div class="h-16 w-[1px] bg-gradient-to-b from-primary to-transparent mb-4"></div>
+<span class="material-symbols-outlined text-primary text-4xl">sparkles</span>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-8 bg-white/80 backdrop-blur-lg border-t border-pink-100">
+<a class="flex flex-col items-center justify-center bg-primary/10 text-primary rounded-2xl px-5 py-2 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">celebration</span>
+<span class="font-label-md text-[10px] mt-1 uppercase">Invitación</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 px-5 py-2 hover:text-primary transition-all active:translate-y-[-2px]" href="#">
+<span class="material-symbols-outlined">location_on</span>
+<span class="font-label-md text-[10px] mt-1 uppercase">Ubicación</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 px-5 py-2 hover:text-primary transition-all active:translate-y-[-2px]" href="#">
+<span class="material-symbols-outlined">edit_calendar</span>
+<span class="font-label-md text-[10px] mt-1 uppercase">RSVP</span>
+</a>
+</nav>
+<!-- RSVP Modal -->
+<div class="fixed inset-0 z-[100] hidden flex items-center justify-center p-6" id="rsvpModal">
+<div class="absolute inset-0 bg-primary/20 backdrop-blur-md" onclick="closeRSVP()"></div>
+<div class="relative w-full max-w-sm glass-card rounded-[2.5rem] p-8 shadow-2xl animate-in fade-in zoom-in duration-300 border border-white/50">
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-headline-md text-2xl text-primary">Confirmar</h4>
+<button class="text-on-surface-variant hover:text-primary transition-colors" onclick="closeRSVP()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form class="space-y-5" onsubmit="event.preventDefault(); alert('¡Gracias por confirmar!'); closeRSVP();">
+<div class="space-y-1">
+<label class="font-label-md text-xs text-primary uppercase ml-1">Nombre Completo</label>
+<input class="w-full bg-white border-pink-100 rounded-2xl py-4 px-5 focus:ring-primary focus:border-primary placeholder:text-slate-300" placeholder="Tu nombre..." type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-xs text-primary uppercase ml-1">¿Asistirás?</label>
+<div class="grid grid-cols-2 gap-4">
+<label class="flex items-center gap-3 bg-white p-4 rounded-2xl cursor-pointer border-2 border-transparent has-[:checked]:border-primary shadow-sm transition-all">
+<input checked="" class="text-primary focus:ring-primary h-5 w-5" name="attendance" type="radio" value="yes"/>
+<span class="font-body-md text-on-surface font-semibold">¡Sí!</span>
+</label>
+<label class="flex items-center gap-3 bg-white p-4 rounded-2xl cursor-pointer border-2 border-transparent has-[:checked]:border-secondary shadow-sm transition-all">
+<input class="text-secondary focus:ring-secondary h-5 w-5" name="attendance" type="radio" value="no"/>
+<span class="font-body-md text-on-surface">No podré</span>
+</label>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-xs text-primary uppercase ml-1">Mensaje para Luci</label>
+<textarea class="w-full bg-white border-pink-100 rounded-2xl py-4 px-5 focus:ring-primary focus:border-primary placeholder:text-slate-300" placeholder="Dedícale unas palabras..." rows="3"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary font-bold tracking-widest text-xs py-5 rounded-2xl shadow-lg mt-4 active:scale-95 transition-transform" type="submit">
+                ENVIAR CONFIRMACIÓN
+            </button>
+</form>
+</div>
+</div>
+<script>
+    function handleRSVP() {
+        document.getElementById('rsvpModal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeRSVP() {
+        document.getElementById('rsvpModal').classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Sparkle generator
+    function createSparkles() {
+        const container = document.getElementById('sparkle-container');
+        const count = 30;
+        for (let i = 0; i < count; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            const size = Math.random() * 4 + 2;
+            sparkle.style.width = `${size}px`;
+            sparkle.style.height = `${size}px`;
+            sparkle.style.left = `${Math.random() * 100}%`;
+            sparkle.style.top = `${Math.random() * 100}%`;
+            sparkle.style.setProperty('--duration', `${Math.random() * 2 + 1}s`);
+            container.appendChild(sparkle);
+        }
+    }
+    createSparkles();
+
+    // Scroll reveal effects
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                entry.target.classList.remove('opacity-0', 'translate-y-10');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('main > div, main img').forEach(el => {
+        if (!el.id.includes('sparkle')) {
+            el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        }
+    });
+</script>
+</body></html>

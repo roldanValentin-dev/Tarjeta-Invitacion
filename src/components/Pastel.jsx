@@ -1,38 +1,43 @@
 function Pastel() {
   return (
-    <div className="text-center mb-5 sm:mb-6 md:mb-8">
-      <svg viewBox="0 0 200 220" className="w-32 sm:w-36 md:w-40 h-auto mx-auto" fill="none">
-        <ellipse cx="100" cy="212" rx="80" ry="10" fill="rgba(0,0,0,0.05)" />
-        <ellipse cx="100" cy="205" rx="72" ry="8" fill="#D1D5DB" />
-        <ellipse cx="100" cy="202" rx="68" ry="6" fill="#F3F4F6" />
+    <div className="text-center">
+      <svg viewBox="0 0 200 220" className="w-28 sm:w-32 md:w-36 h-auto mx-auto drop-shadow-[0_4px_8px_rgba(200,150,200,0.2)]" fill="none">
+        <ellipse cx="100" cy="212" rx="70" ry="8" fill="rgba(200,150,200,0.06)" />
+        <ellipse cx="100" cy="205" rx="64" ry="6" fill="#E1D1EC" />
+        <ellipse cx="100" cy="202" rx="60" ry="4" fill="#F0E6F6" />
 
-        <rect x="30" y="140" width="140" height="58" rx="4" fill="#FCD34D" />
-        <rect x="30" y="140" width="140" height="10" rx="4" fill="#F59E0B" />
+        <rect x="36" y="142" width="128" height="56" rx="3" fill="#F4C2C8" filter="url(#cakeShadow)" />
+        <rect x="36" y="142" width="128" height="8" rx="3" fill="#E87A8A" opacity="0.6" />
 
-        <path d="M35 147 Q55 165 75 147 Q95 170 115 147 Q135 165 155 147 Q175 165 165 147" fill="#FDE68A" />
+        <rect x="54" y="100" width="92" height="46" rx="3" fill="#D9C4E8" filter="url(#cakeShadow)" />
+        <rect x="54" y="100" width="92" height="6" rx="3" fill="#C9A9D6" opacity="0.5" />
 
-        <rect x="50" y="95" width="100" height="50" rx="4" fill="#FDE68A" />
-        <rect x="50" y="95" width="100" height="8" rx="4" fill="#FBBF24" />
+        <circle cx="60" cy="170" r="1.5" fill="#E87A8A" opacity="0.4" />
+        <circle cx="85" cy="164" r="1.5" fill="#C9A9D6" opacity="0.4" />
+        <circle cx="100" cy="170" r="1.5" fill="#E87A8A" opacity="0.4" />
+        <circle cx="115" cy="164" r="1.5" fill="#C9A9D6" opacity="0.4" />
+        <circle cx="140" cy="170" r="1.5" fill="#E87A8A" opacity="0.4" />
 
-        <path d="M55 101 Q70 118 85 101 Q100 122 115 101 Q130 118 145 101" fill="#FFFBEB" />
+        <rect x="78" y="76" width="4" height="26" rx="2" fill="#E87A8A" opacity="0.7" />
+        <rect x="98" y="71" width="4" height="31" rx="2" fill="#C9A9D6" opacity="0.7" />
+        <rect x="118" y="76" width="4" height="26" rx="2" fill="#D9C4E8" opacity="0.7" />
 
-        <circle cx="55" cy="170" r="2" fill="#F59E0B" opacity="0.6" />
-        <circle cx="80" cy="164" r="2" fill="#F59E0B" opacity="0.6" />
-        <circle cx="100" cy="170" r="2" fill="#F59E0B" opacity="0.6" />
-        <circle cx="120" cy="164" r="2" fill="#F59E0B" opacity="0.6" />
-        <circle cx="145" cy="170" r="2" fill="#F59E0B" opacity="0.6" />
+        <ellipse cx="80" cy="72" rx="2" ry="4.5" fill="#FBBF24" className="flame" />
+        <ellipse cx="80" cy="72" rx="1" ry="2" fill="#FFF" className="flame-inner" />
+        <ellipse cx="100" cy="66" rx="2" ry="4.5" fill="#FBBF24" className="flame" style={{ animationDelay: '0.15s' }} />
+        <ellipse cx="100" cy="66" rx="1" ry="2" fill="#FFF" className="flame-inner" style={{ animationDelay: '0.15s' }} />
+        <ellipse cx="120" cy="72" rx="2" ry="4.5" fill="#FBBF24" className="flame" style={{ animationDelay: '0.3s' }} />
+        <ellipse cx="120" cy="72" rx="1" ry="2" fill="#FFF" className="flame-inner" style={{ animationDelay: '0.3s' }} />
 
-        <rect x="76" y="73" width="5" height="24" rx="2" fill="#EF4444" />
-        <rect x="97" y="68" width="5" height="29" rx="2" fill="#3B82F6" />
-        <rect x="118" y="73" width="5" height="24" rx="2" fill="#10B981" />
-
-        <ellipse cx="78.5" cy="69" rx="2.5" ry="5" fill="#FBBF24" className="flame" />
-        <ellipse cx="78.5" cy="69" rx="1.2" ry="2.5" fill="#FFF" className="flame-inner" />
-        <ellipse cx="99.5" cy="63" rx="2.5" ry="5" fill="#FBBF24" className="flame" style={{ animationDelay: '0.15s' }} />
-        <ellipse cx="99.5" cy="63" rx="1.2" ry="2.5" fill="#FFF" className="flame-inner" style={{ animationDelay: '0.15s' }} />
-        <ellipse cx="120.5" cy="69" rx="2.5" ry="5" fill="#FBBF24" className="flame" style={{ animationDelay: '0.3s' }} />
-        <ellipse cx="120.5" cy="69" rx="1.2" ry="2.5" fill="#FFF" className="flame-inner" style={{ animationDelay: '0.3s' }} />
+        <defs>
+          <filter id="cakeShadow">
+            <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#C9A9D6" floodOpacity="0.2" />
+          </filter>
+        </defs>
       </svg>
+      <p className="font-serif text-sm sm:text-base text-lavender-500 italic mt-3 leading-relaxed px-2">
+        Gracias a todos los que me acompañan<br />en este camino y son parte de mi historia
+      </p>
     </div>
   )
 }

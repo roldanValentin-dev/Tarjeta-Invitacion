@@ -9,37 +9,56 @@ import Pastel from './components/Pastel'
 import Mensaje from './components/Mensaje'
 import Asistencia from './components/Asistencia'
 import Footer from './components/Footer'
+import RSVPModal from './components/RSVPModal'
 
-const PARTICLES = Array.from({ length: 14 }, (_, i) => ({
-  id: `p${i}`,
-  left: `${(i * 7 + Math.sin(i * 1.7) * 2) % 100}%`,
-  delay: `${i * 0.45}s`,
-  duration: `${14 + (i % 7) * 1.8}s`,
-  size: 2 + (i % 4) * 2,
+const GLITTER = Array.from({ length: 4 }, (_, i) => ({
+  id: `gl${i}`,
+  left: `${(i * 12 + Math.sin(i * 1.4) * 5) % 100}%`,
+  delay: `${i * 0.6}s`,
+  duration: `${14 + (i % 4) * 3}s`,
+  size: 2 + (i % 3),
+}))
+
+const SPARKLES = Array.from({ length: 4 }, (_, i) => ({
+  id: `sp${i}`,
+  left: `${(i * 12 + Math.sin(i * 1.8) * 4 + 4) % 100}%`,
+  top: `${(i * 12 + Math.cos(i * 1.3) * 5 + 8) % 100}%`,
+  delay: `${i * 0.9 + Math.sin(i * 0.4) * 0.3}s`,
+  size: 7 + (i % 2) * 3,
 }))
 
 const NOTES = [
-  { id: 'n1', left: '15%', delay: '1.2s', duration: '18s', note: '♩' },
-  { id: 'n2', left: '75%', delay: '2.5s', duration: '22s', note: '♪' },
-  { id: 'n3', left: '45%', delay: '3.8s', duration: '16s', note: '♫' },
-  { id: 'n4', left: '88%', delay: '5s', duration: '20s', note: '♬' },
+  { id: 'n1', left: '12%', delay: '1.5s', duration: '20s', note: '♩' },
+  { id: 'n2', left: '78%', delay: '3s', duration: '24s', note: '♪' },
+  { id: 'n3', left: '42%', delay: '4.5s', duration: '18s', note: '♫' },
+  { id: 'n4', left: '90%', delay: '6s', duration: '22s', note: '♬' },
 ]
 
-const CONFETTI_COLORS = ['#FBBF24', '#F59E0B', '#FDE68A', '#D97706', '#FCD34D', '#FFFBEB']
-const CONFETTI = Array.from({ length: 30 }, (_, i) => ({
+const CONFETTI_COLORS = ['#E87A8A', '#C9A9D6', '#E8B4B8', '#D9C4E8', '#D4959C', '#B894C9']
+const CONFETTI = Array.from({ length: 16 }, (_, i) => ({
   id: `c${i}`,
-  left: `${(i * 3.3 + Math.sin(i * 2.1) * 1.5) % 100}%`,
+  left: `${(i * 12.5 + Math.sin(i * 2.1) * 3) % 100}%`,
   delay: `${Math.sin(i * 0.7) * 1.2 + 0.8}s`,
-  duration: `${2.5 + Math.sin(i * 0.5) * 1.2 + 1.5}s`,
+  duration: `${3 + Math.sin(i * 0.5) * 1.2 + 1.5}s`,
   rotation: `${180 + Math.sin(i * 0.9) * 300}deg`,
   w: `${4 + Math.sin(i * 1.3) * 3 + 3}px`,
   h: `${6 + Math.sin(i * 0.8) * 4 + 4}px`,
   color: CONFETTI_COLORS[i % CONFETTI_COLORS.length],
 }))
 
+const CARD_SPARKLES = Array.from({ length: 3 }, (_, i) => ({
+  id: `cs${i}`,
+  top: `${15 + i * 14 + Math.sin(i * 2.3) * 6}%`,
+  left: `${8 + i * 16 + Math.cos(i * 1.7) * 5}%`,
+  delay: `${i * 0.5}s`,
+}))
+
 function App() {
+  const [loading, setLoading] = useState(true)
   const [ripples, setRipples] = useState([])
+  const [rsvpOpen, setRsvpOpen] = useState(false)
   const cursorRef = useRef(null)
+  const revealRef = useRef(null)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -48,10 +67,37 @@ function App() {
   }, [])
 
   useEffect(() => {
+    const t = setTimeout(() => setLoading(false), 2600)
+    return () => clearTimeout(t)
+  }, [])
+
+  useEffect(() => {
+    if (loading) return
+    const el = revealRef.current
+    if (!el) return
+    const items = el.querySelectorAll('.reveal')
+    items.forEach((item, i) => {
+      setTimeout(() => item.classList.add('revealed'), 200 + i * 120)
+    })
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed')
+            obs.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.12 }
+    )
+    items.forEach((child) => obs.observe(child))
+    return () => obs.disconnect()
+  }, [loading])
+
+  useEffect(() => {
     const el = cursorRef.current
     if (!el) return
     let raf = null
-
     const move = (e) => {
       if (raf) return
       raf = requestAnimationFrame(() => {
@@ -60,10 +106,8 @@ function App() {
         raf = null
       })
     }
-
     const show = () => { el.style.opacity = '1' }
     const hide = () => { el.style.opacity = '0' }
-
     document.addEventListener('mousemove', move)
     document.addEventListener('mouseenter', show)
     document.addEventListener('mouseleave', hide)
@@ -75,61 +119,136 @@ function App() {
     }
   }, [])
 
+
+
   const handleCardClick = (e) => {
     const rect = e.currentTarget.getBoundingClientRect()
     const id = Date.now() + Math.random()
     setRipples((prev) => [...prev, { id, x: e.clientX - rect.left, y: e.clientY - rect.top }])
-    setTimeout(() => setRipples((prev) => prev.filter((r) => r.id !== id)), 700)
+    setTimeout(() => setRipples((prev) => prev.filter((r) => r.id !== id)), 800)
   }
 
   return (
-    <div className="noise-overlay bg-animated relative min-h-screen flex items-center justify-center p-3 sm:p-4 overflow-x-hidden cursor-enabled">
-      <div
-        ref={cursorRef}
-        className="hidden sm:block fixed pointer-events-none z-[9999] text-gold-400 text-xl opacity-0 transition-opacity duration-200"
-        style={{ left: 0, top: 0, transform: 'translate(-50%, -50%)', textShadow: '0 0 10px rgba(251,191,36,0.6)' }}
-      >
-        ✦
-      </div>
-
-      {PARTICLES.map((p) => (
-        <div key={p.id} className="particle" style={{ left: p.left, width: p.size, height: p.size, animationDelay: p.delay, animationDuration: p.duration }} />
-      ))}
-
-      {NOTES.map((n) => (
-        <div key={n.id} className="music-note text-lg sm:text-xl md:text-2xl" style={{ left: n.left, animationDelay: n.delay, animationDuration: n.duration }}>{n.note}</div>
-      ))}
-
-      {CONFETTI.map((c) => (
-        <div key={c.id} className="confetti-piece" style={{ left: c.left, width: c.w, height: c.h, '--rotation': c.rotation, background: c.color, animationDuration: c.duration, animationDelay: c.delay }} />
-      ))}
+    <>
+      {loading && (
+        <div className="preloader">
+          <h1 className="shimmer-title text-7xl sm:text-8xl md:text-9xl font-titulo">80</h1>
+        </div>
+      )}
 
       <div
-        className="card-enter relative max-w-lg w-full rounded-3xl shadow-[0_8px_40px_rgba(146,64,14,0.12),0_2px_10px_rgba(146,64,14,0.08)] border border-amber-200/60 p-6 sm:p-8 md:p-10 lg:p-14 my-4 sm:my-6 md:my-8 overflow-hidden"
-        onClick={handleCardClick}
+        className="relative min-h-screen flex items-center justify-center p-3 sm:p-4 overflow-x-hidden cursor-enabled"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 10l5 15 15 5-15 5-5 15-5-15-15-5 15-5z' fill='%23FBBF24' opacity='0.03'/%3E%3C/svg%3E")`,
-          backgroundColor: '#FFFCF7',
+          backgroundImage: 'url("/img/a_beautiful_background_pattern_of_delicate_pink_and_purple_flowers_with.png")',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
         }}
       >
-        {ripples.map((r) => (
-          <span key={r.id} className="ripple" style={{ left: r.x, top: r.y }} />
+        <div
+          ref={cursorRef}
+          className="hidden sm:block fixed pointer-events-none z-[9999] text-lavender-300 text-xl opacity-0 transition-opacity duration-200"
+          style={{ left: 0, top: 0, transform: 'translate(-50%, -50%)', textShadow: '0 0 10px rgba(201,169,214,0.5)' }}
+        >
+          ✦
+        </div>
+
+        {GLITTER.map((g) => (
+          <div
+            key={g.id}
+            className="particle glitter-dot"
+            style={{
+              left: g.left,
+              width: g.size,
+              height: g.size,
+              background: 'radial-gradient(circle, #E8B4B8, #C9A9D6)',
+              boxShadow: '0 0 6px 2px rgba(200,150,200,0.2)',
+              animationDelay: g.delay,
+              animationDuration: g.duration,
+            }}
+          />
         ))}
 
-        <div className="stagger-fade">
-          <Header />
-          <Foto />
-          <Nombre />
-          <Invitacion />
-          <Detalles />
-          <Contador />
-          <Pastel />
-          <Mensaje />
-          <Asistencia />
-          <Footer />
+        {NOTES.map((n) => (
+          <div key={n.id} className="music-note text-lg sm:text-xl" style={{ left: n.left, animationDelay: n.delay, animationDuration: n.duration }}>{n.note}</div>
+        ))}
+
+        {CONFETTI.map((c) => (
+          <div key={c.id} className="confetti-piece" style={{ left: c.left, width: c.w, height: c.h, '--rotation': c.rotation, background: c.color, animationDuration: c.duration, animationDelay: c.delay }} />
+        ))}
+
+        {SPARKLES.map((s) => (
+          <div key={s.id} className="sparkle-star" style={{ left: s.left, top: s.top, width: s.size, height: s.size, animationDelay: s.delay, fontSize: s.size }} />
+        ))}
+
+        <div className="card-wrapper w-full max-w-lg mx-auto my-4 sm:my-6 md:my-8">
+          <div
+            className="card-enter relative w-full rounded-[2rem] shadow-[0_12px_60px_rgba(200,150,200,0.15),0_4px_16px_rgba(200,150,200,0.08)] border border-rose-200/40 p-5 sm:p-6 md:p-8 lg:p-10 overflow-hidden"
+            onClick={handleCardClick}
+            style={{
+              backgroundColor: 'rgba(255, 245, 247, 0.95)',
+            }}
+          >
+            {/* Corner decorations */}
+            <span className="corner-flower text-sm sm:text-base" style={{ top: '0.75rem', left: '0.75rem', '--rot': '-15deg' }}>🌸</span>
+            <span className="corner-flower text-sm sm:text-base" style={{ top: '0.75rem', right: '0.75rem', '--rot': '15deg' }}>🌸</span>
+            <span className="corner-flower text-sm sm:text-base" style={{ bottom: '0.75rem', left: '0.75rem', '--rot': '15deg' }}>🌸</span>
+            <span className="corner-flower text-sm sm:text-base" style={{ bottom: '0.75rem', right: '0.75rem', '--rot': '-15deg' }}>🌸</span>
+
+            {/* Inner card sparkles */}
+            {CARD_SPARKLES.map((s) => (
+              <span
+                key={s.id}
+                className="card-sparkle"
+                style={{ top: s.top, left: s.left, animationDelay: s.delay }}
+              >
+                ✦
+              </span>
+            ))}
+
+            {ripples.map((r) => (
+              <span key={r.id} className="ripple" style={{ left: r.x, top: r.y }} />
+            ))}
+
+            <div ref={revealRef} className="space-y-5 sm:space-y-6">
+              <div className="reveal section-card"><Header /></div>
+              <div className="reveal section-card"><Nombre /></div>
+              <div className="reveal section-card"><Foto /></div>
+
+              <div className="flex items-center gap-3 opacity-30 px-4">
+                <span className="h-px flex-1 bg-gradient-to-r from-transparent via-lavender-300/50 to-transparent" />
+                <span className="text-lavender-300/60 text-xs">✦</span>
+                <span className="h-px flex-1 bg-gradient-to-r from-transparent via-lavender-300/50 to-transparent" />
+              </div>
+
+              <div className="reveal section-card"><Invitacion /></div>
+              <div className="reveal section-card"><Detalles /></div>
+
+              <div className="flex items-center gap-3 opacity-30 px-4">
+                <span className="h-px flex-1 bg-gradient-to-r from-transparent via-lavender-300/50 to-transparent" />
+                <span className="text-lavender-300/60 text-xs">🌸</span>
+                <span className="h-px flex-1 bg-gradient-to-r from-transparent via-lavender-300/50 to-transparent" />
+              </div>
+
+              <div className="reveal section-card"><Contador /></div>
+              <div className="reveal section-card"><Pastel /></div>
+              <div className="reveal section-card"><Mensaje /></div>
+
+              <div className="flex items-center gap-3 opacity-30 px-4">
+                <span className="h-px flex-1 bg-gradient-to-r from-transparent via-lavender-300/50 to-transparent" />
+                <span className="text-lavender-300/60 text-xs">✦</span>
+                <span className="h-px flex-1 bg-gradient-to-r from-transparent via-lavender-300/50 to-transparent" />
+              </div>
+
+              <div className="reveal section-card"><Asistencia onOpenModal={() => setRsvpOpen(true)} /></div>
+              <div className="reveal section-card"><Footer /></div>
+            </div>
+          </div>
         </div>
+
+        <RSVPModal isOpen={rsvpOpen} onClose={() => setRsvpOpen(false)} />
       </div>
-    </div>
+    </>
   )
 }
 
