@@ -9,7 +9,7 @@ function Detalles() {
             Fecha
           </p>
           <p className="font-serif text-3xl sm:text-4xl md:text-5xl text-rose-800 font-bold italic">
-            Sábado 13 de junio
+            Domingo 14 de junio
           </p>
         </div>
 
@@ -20,7 +20,7 @@ function Detalles() {
             Hora
           </p>
           <p className="font-serif text-3xl sm:text-4xl md:text-5xl text-rose-800 font-bold italic">
-            12:30 hs
+            12:00 hs
           </p>
         </div>
 

@@ -48,7 +48,7 @@ function RSVPModal({ isOpen, onClose }) {
     const text = encodeURIComponent(
       `¡Hola! ${name} ${attendance === 'yes' ? 'confirma' : 'no podrá'} asistir al cumpleaños de Luci 🎉\n\n${message ? `Mensaje: ${message}` : 'Sin mensaje'}`
     )
-    window.open(`https://wa.me/?text=${text}`, '_blank')
+    window.open(`https://wa.me/5493815233053?text=${text}`, '_blank')
     setSubmitted(true)
     setTimeout(() => {
       onClose()
